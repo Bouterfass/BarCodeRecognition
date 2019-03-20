@@ -6,14 +6,17 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+
 public class Threshold {
 
-	public static void main(String[] args) {
+	public  File threshold(String filepath, String result) {
 
 		File f = null;
+		String path = String.format("C:\\Users\\cefyo\\Desktop\\architecture\\%s.png", filepath);
+		String res = String.format("C:\\Users\\cefyo\\Desktop\\architecture\\%s.png", result);
 		BufferedImage img = null;
 		try {
-			img = ImageIO.read(new File("C:\\Users\\cefyo\\Desktop\\architecture\\barcodegray.png"));
+			img = ImageIO.read(new File(path) );
 		} catch (IOException e) {
 
 			e.printStackTrace();
@@ -22,8 +25,7 @@ public class Threshold {
 		System.out.println("Largeur : " + img.getWidth());
 		System.out.println("Hauteur : " + img.getHeight());
 
-		System.out.println("Couleur hors cercle : " + img.getRGB(10, 10));
-		System.out.println("Couleur dans le cercle : " + img.getRGB(250, 250));
+	
 		float threshold = -8421504;
 
 		for (int x = 0; x < (img.getWidth() ); x++) {
@@ -32,10 +34,10 @@ public class Threshold {
 				float rgb = img.getRGB(x, y);
 				if (rgb > threshold)
 				{
-					System.out.println("c supp");
+				//	System.out.println("c supp");
 					img.setRGB(x, y, -1);
 				} else {
-					System.out.println("c inf");
+				//	System.out.println("c inf");
 					img.setRGB(x, y, -16777216);
 				}
 
@@ -43,12 +45,13 @@ public class Threshold {
 		}
 		try
 		{
-			f = new File("C:\\Users\\cefyo\\Desktop\\architecture\\barcodeT.png");
+			f = new File(res);
 			ImageIO.write(img, "png", f);
 		}catch(IOException e)
 		{
 			System.out.println(e);
 		}
+		return f;
 	}
 
 }

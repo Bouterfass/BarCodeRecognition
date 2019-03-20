@@ -8,14 +8,16 @@ import javax.imageio.ImageIO;
 
 public class Grayimage {
 
-	public static void main(String[] args) throws IOException{
+	public File grayImage(String filepath, String result) throws IOException{
+		
 		BufferedImage img = null;
 		File f = null;
-		
+		String path = String.format("C:\\Users\\cefyo\\Desktop\\architecture\\%s.png", filepath);
+		String res = String.format("C:\\Users\\cefyo\\Desktop\\architecture\\%s.png", result);
 		//read image
 		try
 		{
-			f = new File("C:\\Users\\cefyo\\Desktop\\architecture\\barcode.png");
+			f = new File(path);
 			img = ImageIO.read(f);
 			
 		}catch(IOException e)
@@ -50,13 +52,13 @@ public class Grayimage {
 		
 		try
 		{
-			f = new File("C:\\Users\\cefyo\\Desktop\\architecture\\barcodegray.png");
+			f = new File(res);
 			ImageIO.write(img, "png", f);
 		}catch(IOException e)
 		{
 			System.out.println(e);
 		}
-		
+		return f;
 	}
 	
 }
