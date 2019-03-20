@@ -9,14 +9,15 @@ import javax.imageio.ImageIO;
 
 public class Columnlength {
 
-	public ArrayList<Integer> getLength(String filepath ) {
+	public ArrayList<Integer> getLength(String filepath) {
 
 		BufferedImage img = null;
-		
+
 		String path = String.format("C:\\Users\\cefyo\\Desktop\\architecture\\%s.png", filepath);
-		
+
 		ArrayList<Integer> stock = new ArrayList<Integer>();
 		ArrayList<Integer> realone = new ArrayList<Integer>();
+
 		int length = 0;
 
 		try {
@@ -34,9 +35,9 @@ public class Columnlength {
 			}
 			// System.out.println(length);
 			if ((stock.isEmpty())) {
-			
+
 				stock.add(length);
-				
+
 			}
 			if (length == stock.get(0)) {
 				stock.add(length);
@@ -53,8 +54,7 @@ public class Columnlength {
 			if (realone.get(j) == 0)
 				realone.remove(j);
 		}
-	
-	
+
 		return (realone);
 	}
 }
